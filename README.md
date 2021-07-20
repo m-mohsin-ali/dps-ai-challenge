@@ -2,6 +2,8 @@
 First make an account on Google Cloud Platform https://cloud.google.com/.
 Then navigate to console tab on the upper right corner.
 
+## Initiate
+
 We start by creating a new project 
 ![img.png](images/img.png)
 
@@ -22,6 +24,8 @@ gsutil mb -l us-central1 $BUCKET_NAME
 here is my bucket name.
 
 ![img_2.png](images/img_2.png)
+
+## Training
 
 Now we create a directory ``` mpg/ ``` 
 now in this directory we make the Dockerfile ``` mpg/Dockerfile ``` 
@@ -48,13 +52,19 @@ Now push the Image to Registry
 docker push $IMAGE_URI
 ```
 Here you can see the image in the container registry.
+
 ![img_3.png](images/img_3.png)
 
 
 Lets train the model for our problem using Vertex AI Training.
+
 ![img_4.png](images/img_4.png)
 
 Now once the training is done lets deploy the model. First we install  ``` pip3 install google-cloud-aiplatform --upgrade --user ```.
+
+
+## Deployment 
+
 * make sure you are in the mpg directory
 
 Create a new file ``` mpg/deploy.py ``` and then execute
@@ -69,6 +79,8 @@ Then it will create an end point of the model.
 
 Now we can observe the endpoint has been created successfully.
 ![img_7.png](images/img_7.png)
+
+## Testing
 
 For testing the api create a ``` mpg/predct.py ```. replace the end point name with your endpoint name, you can get it from 
 ``` 
